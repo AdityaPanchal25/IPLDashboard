@@ -2,7 +2,8 @@ import { React, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MatchDetailCard } from "../components/MatchDetailCard";
 import { MatchSmallCard } from "../components/MatchSmallCard";
-import { PieChart } from 'react-minimal-pie-chart';
+import { PieChart } from "react-minimal-pie-chart";
+import { Link } from "react-router-dom";
 
 import "./TeamPage.scss";
 
@@ -11,7 +12,7 @@ export const TeamPage = () => {
   const { teamName } = useParams();
 
   useEffect(() => {
-    const fetchMatches = async () => {
+    const fetchTeam = async () => {
       const response = await fetch(
         `http://localhost:8080/team/${teamName}` // Template literal for dynamic URL
       );
@@ -19,7 +20,7 @@ export const TeamPage = () => {
       console.log(data);
       setTeam(data);
     };
-    fetchMatches();
+    fetchTeam();
   }, [teamName]);
 
   if (!team || !team.teamName) {
@@ -28,41 +29,43 @@ export const TeamPage = () => {
 
   return (
     <div className="TeamPage">
-      <div className='team-name-section'>
-      <h1 className="team-name">{team.teamName}</h1>
+      <div className="team-name-section">
+        <h1 className="team-name">{team.teamName}</h1>
       </div>
-      <div className='win-loss-section'>
+      <div className="win-loss-section">
         Win/Loses
         <PieChart
-                data={[
-                    { title: 'Losses', value: team.totalMatches - team.totalWins, color: '#a34d5d' },
-                    { title: 'Wins', value: team.totalWins, color: '#4da375' },
-                ]}
-                />
+          data={[
+            {
+              title: "Losses",
+              value: team.totalMatches - team.totalWins,
+              color: "#a34d5d",
+            },
+            { title: "Wins", value: team.totalWins, color: "#4da375" },
+          ]}
+        />
       </div>
-     
+
       {/* {team.matches.length > 0 ? ( */}
-        {/* <> */}
+      {/* <> */}
 
-        <div className="match-detail-section">
+      <div className="match-detail-section">
         <h1>Latest Matches</h1>
-          <MatchDetailCard teamName={team.teamName} match={team.matches[0]} />
-        </div>
-          {team.matches.slice(1).map((match) => (
-              <MatchSmallCard
-              key={match.id}
-              teamName={team.teamName}
-              match={match}
-            />
-          ))}
-       
-          <div className="more-link">
-            <a href="#">More </a>
-          </div>
+        <MatchDetailCard teamName={team.teamName} match={team.matches[0]} />
+      </div>
+      {team.matches.slice(1).map((match) => (
+        <MatchSmallCard key={match.id} teamName={team.teamName} match={match} />
+      ))}
 
+      <div className="more-link">
+        <Link
+          to={`/teams/${teamName}/matches/${process.env.REACT_APP_DATA_END_YEAR}`}
+        >
+          More >
+        </Link>
+      </div>
 
-
-        {/* </>
+      {/* </>
       ) :  */}
       {/* (
         <p>Loading matches...</p> // Display a loading message or placeholder
