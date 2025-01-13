@@ -1,26 +1,39 @@
-
 .MatchDetailCard {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 10px;
+    padding: 20px;
     margin-bottom: 20px;
-
+    border-radius: 12px;
+    background: linear-gradient(145deg, rgba(79, 184, 184, 0.8), rgba(100, 255, 255, 0.5)); /* Brighter gradient */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* More noticeable shadow */
+    transition: all 0.3s ease-in-out;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Darker shadow on hover */
+    }
+  
     .match-date, .match-venue, .match-result {
-        margin-top: 10px;
+      margin-top: 10px;
+      color: #333; /* Darker text for better contrast */
     }
+    
     .additional-detail {
-        text-align: right;
-        & > p {
-            margin-bottom: 20px;;
-        }
-
+      text-align: right;
+      & > p {
+        margin-bottom: 20px;
+        color: #444; /* Slightly lighter for readability */
+      }
     }
-
-}
-.won-card{
-    background-attachment: #4ac590;
-}
-
-.lost-card{
-    background-attachment: #4ac590;
-}
+  }
+  
+  .won-card {
+    background: linear-gradient(135deg, rgba(0, 255, 140, 0.8), rgba(79, 184, 184, 0.5)); /* Bright green gradient */
+    box-shadow: 0 4px 12px rgba(0, 255, 0, 0.3);
+  }
+  
+  .lost-card {
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.8), rgba(255, 100, 100, 0.5)); /* Bright red gradient */
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+  }
+      

@@ -4,6 +4,7 @@ import { MatchDetailCard } from "../components/MatchDetailCard";
 import { MatchSmallCard } from "../components/MatchSmallCard";
 import { PieChart } from "react-minimal-pie-chart";
 import { Link } from "react-router-dom";
+import iplIcon from "../components/IconImages/Cricket_black_logo.png";
 
 import "./TeamPage.scss";
 
@@ -30,33 +31,35 @@ export const TeamPage = () => {
   return (
     <div className="TeamPage">
       <div className="team-name-section">
+        <a href="/">
+          <img src={iplIcon} alt="IPL Logo" className="ipl-Icon" />
+        </a>
         <h1 className="team-name">{team.teamName}</h1>
-      </div>
-      <div className="win-loss-section">
-        Win/Loses
-        <PieChart
-          data={[
-            {
-              title: "Losses",
-              value: team.totalMatches - team.totalWins,
-              color: "#a34d5d",
-            },
-            { title: "Wins", value: team.totalWins, color: "#4da375" },
-          ]}
-        />
+
+        <div className="win-loss-section">
+          <PieChart
+            data={[
+              {
+                title: "Losses",
+                value: team.totalMatches - team.totalWins,
+                color: "#a34d5d",
+              },
+              { title: "Wins", value: team.totalWins, color: "#4da375" },
+            ]}
+          />
+        </div>
       </div>
 
       {/* {team.matches.length > 0 ? ( */}
       {/* <> */}
 
       <div className="match-detail-section">
-        <h1>Latest Matches</h1>
+        <h1 className="Latest-Matches">Latest Matches</h1>
         <MatchDetailCard teamName={team.teamName} match={team.matches[0]} />
       </div>
       {team.matches.slice(1).map((match) => (
         <MatchSmallCard key={match.id} teamName={team.teamName} match={match} />
       ))}
-
       <div className="more-link">
         <Link
           to={`/teams/${teamName}/matches/${process.env.REACT_APP_DATA_END_YEAR}`}
@@ -64,12 +67,9 @@ export const TeamPage = () => {
           More >
         </Link>
       </div>
-
-      {/* </>
-      ) :  */}
-      {/* (
-        <p>Loading matches...</p> // Display a loading message or placeholder
-      )} */}
+      <div className="bake-TO-Dashbord">
+        <Link to={"../"}>Back to Dashboard</Link>
+      </div>
     </div>
   );
 };

@@ -1,7 +1,21 @@
 .TeamTile {
     height: 170px;
     text-align: center;
-    border: 1px solid white;
+    border: 1px solid #fff;
     padding: 20px;
-
-}
+    background: linear-gradient(135deg, rgba(79, 184, 184, 0.8), rgba(255, 255, 255, 0.5));
+    border-radius: 12px; /* Rounded corners for a modern look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds a soft shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Smooth transition on hover */
+  
+    /* Optional: Ensure text doesn't overflow */
+    overflow: hidden;
+    
+    /* Optional: Add a slight hover effect to make it more interactive */
+    &:hover {
+      transform: translateY(-5px); /* Slightly lift the box when hovered */
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Stronger shadow on hover */
+      background: linear-gradient(135deg, rgba(79, 184, 184, 0.9), rgba(255, 255, 255, 0.7)); /* More intense gradient on hover */
+    }
+  }
+  

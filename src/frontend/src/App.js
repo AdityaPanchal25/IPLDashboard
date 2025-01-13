@@ -10,7 +10,7 @@ function App() {
           <Routes>
           <Route path="/teams/:teamName/matches/:year" element={<MatchPage />} />
           <Route path="/teams/:teamName" element={<TeamPage />} />
-          <Route path="/team" element={<HomePage/>} />
+          <Route path="/" element={<HomePage/>} />
         </Routes>
    
       </Router>

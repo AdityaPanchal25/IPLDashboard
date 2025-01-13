@@ -1,12 +1,30 @@
 .HomePage {
+    color: rgb(79, 184, 184);
+  
+    .header-section {
+      display: flex; 
+      align-items: center; 
+      justify-content: flex-start; 
+      gap: 10px; 
+    }
+  
     .app-name {
-        font-size: 3rem;
-        margin: 30px auto;
+      font-size: 3rem;
+      margin: 30px 0; /* Adjust margin for better spacing */
+      color: rgb(79, 184, 184);
     }
+  
+    .ipl-icon {
+      width: 100px;
+      margin-right: 215px;
+      border-radius: 5px;
+    }
+  
     .team-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-column-gap: 10px;
-        grid-row-gap: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: 10px;
+      grid-row-gap: 10px;
     }
-}
+  }
+  
