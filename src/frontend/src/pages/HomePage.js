@@ -2,13 +2,14 @@ import { React, useEffect, useState } from "react";
 import { TeamTile } from "../components/TeamTile";
 import "./HomePage.scss";
 import iplIcon from "../components/IconImages/Cricket_black_logo.png";
+import headerBackG from "../components/IconImages/Header Background.jpg";
 
 export const HomePage = () => {
   const [teams, setTeams] = useState([]);
   useEffect(() => {
     const fetchAllTeams = async () => {
       const response = await fetch(
-        `http://localhost:8080/team` // Template literal for dynamic URL
+        `${process.env.REACT_APP_API_ROOT_URL}/team` // Template literal for dynamic URL
       );
       const data = await response.json();
       console.log(data);
@@ -19,6 +20,11 @@ export const HomePage = () => {
 
   return (
     <div className="HomePage">
+      <img
+        className="header-BackGround"
+        src={headerBackG}
+        alt="header Background"
+      />
       <div className="header-section">
         <a href="/">
           <img className="ipl-icon" src={iplIcon} alt="IPL-ICON" />
@@ -27,7 +33,11 @@ export const HomePage = () => {
       </div>
       <div className="team-grid">
         {teams.map((team) => (
-          <TeamTile className="team-name" teamName={team.teamName}></TeamTile>
+          <TeamTile
+            key={team.id}
+            className="team-name"
+            teamName={team.teamName}
+          ></TeamTile>
         ))}
       </div>
     </div>

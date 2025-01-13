@@ -15,7 +15,7 @@ export const TeamPage = () => {
   useEffect(() => {
     const fetchTeam = async () => {
       const response = await fetch(
-        `http://localhost:8080/team/${teamName}` // Template literal for dynamic URL
+        `${process.env.REACT_APP_API_ROOT_URL}/team/${teamName}` // Template literal for dynamic URL
       );
       const data = await response.json();
       console.log(data);
